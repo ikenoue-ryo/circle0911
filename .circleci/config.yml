@@ -25,9 +25,9 @@ jobs:
   build:
     executor: test_default
     steps:
-      -pip_install
+      - pip_install
       - run:
-        name: test
+        name: start_project
         command: django-admin startproject config .
 
 
