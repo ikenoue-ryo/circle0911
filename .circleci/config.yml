@@ -10,24 +10,3 @@ executors:
           PYTHONDONTWRITEBYTECODE: 1
           PYTHONUNBUFFERED: 1
           TZ: Asia/Tokyo
-
-#実行コマンドの定義
-commands:
-  pip_install:
-    description: 'pip install を実行'
-    steps:
-      - run:
-        name: pip install
-        command: pip install django
-  
-#ジョブの実行
-jobs:
-  build:
-    executor: test_default
-    steps:
-      - pip_install
-      - run:
-        name: start_project
-        command: django-admin startproject config .
-
-
