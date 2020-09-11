@@ -1,13 +1,7 @@
-executors:
-  foo:
-    environment:
-      TOKEN: foobarbaz
-    docker:
-      - image: alpine
-    working_directory: ~/repo
+
+version: 2
 
 jobs:
   build:
-    executor: foo
     steps:
       - run: echo 'pwd'
