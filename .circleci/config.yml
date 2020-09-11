@@ -10,3 +10,10 @@ executors:
           PYTHONDONTWRITEBYTECODE: 1
           PYTHONUNBUFFERED: 1
           TZ: Asia/Tokyo
+
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - build
+    
