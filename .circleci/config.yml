@@ -31,8 +31,3 @@ jobs:
         command: django-admin startproject config .
 
 
-workflows:
-  version: 2.1
-  build:
-    jobs:
-      - build
