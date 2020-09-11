@@ -11,6 +11,23 @@ executors:
           PYTHONUNBUFFERED: 1
           TZ: Asia/Tokyo
 
+commands:
+  pip_install:
+    description: 'pip install実行'
+    steps:
+      - run:
+        name: pip install
+        command: pip install django
+
+jobs:
+  build:
+    steps:
+      - pip_install
+      - run:
+        name: start
+        command: django-admin startproject config .
+
+
 workflows:
   version: 2.1
   build:
