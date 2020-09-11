@@ -1,10 +1,38 @@
+version: 2.1
 
-version: 2
+#実行環境の定義
+executors:
+  test_default:
+    working_directory: ~/myproject
+    docker:
+      - image: circleci/python:3.7
+        environment:
+          PYTHONDONTWRITEBYTECODE: 1
+          PYTHONUNBUFFERED: 1
+          TZ: Asia/Tokyo
 
+#実行コマンドの定義
+commands:
+  pip_install:
+    description: 'pip install を実行'
+    steps:
+      - run:
+        name: pip install
+        command: pip install django
+  
+#ジョブの実行
 jobs:
   build:
-    docker:
-      - image: alpine
-    working_directory: ~/repo
+    executor: test_default
     steps:
-      - run: echo 'pwd'
+      -pip_install
+      - run:
+        name: test
+        command: django-admin startproject config .
+
+
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - build
