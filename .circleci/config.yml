@@ -9,10 +9,17 @@ jobs:
     steps:
       - run:
         name: install django
-          command:
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install django
+        command: pip_insta_django
+
+commands:
+  pip_insta_django:
+    description: "djangoのインストール"
+    steps:
+      - run:
+        name: pip install
+        command: pip install django
+
+
 
 
 
