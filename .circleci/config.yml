@@ -6,20 +6,6 @@ jobs:
       - image: circleci/python:3.6.1
     working_directory: ~/repo
 
-    steps:
-      - run:
-        name: install django
-        command: pip_insta_django
-
-commands:
-  pip_insta_django:
-    description: "djangoのインストール"
-    steps:
-      - run:
-        name: pip install
-        command: pip install django
-
-
 
 
 
