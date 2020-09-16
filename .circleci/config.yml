@@ -13,7 +13,8 @@ jobs:
   my-job:
     executor: my-executor
     steps:
-      - command: python3 manage.py test
+      - run:
+        command: python3 manage.py test
 
 workflows:
   version: 2.1
