@@ -1,19 +1,34 @@
 version: 2
 
+#実行環境を定義
 executors:
   my-executor:
+    working_directory: ~/myprojects
     docker:
-      - image: circleci/python:3.8.0
+      - image: circleci/python:3.7
 
-jobs:
-  build:
-    executor: my-executor
-    working_directory: ~/projects
-    steps:
-      - run:
-          command: |
-            sudo pip install pipenv
-            pipenv install django
-            pipenv run django-admin startproject config .
-            pipenv run python3 manage.py startapp myapp
-            pipenv run python3 manage.py test
+
+  jobs:
+    build:
+      executor: my-executor
+      steps:
+        - run:
+            name: test
+            command: |
+              sudo pip install pipenv
+              pipenv install django
+              pipenv run django-admin startproject config .
+              
+
+# jobs:
+#   build:
+#     executor: my-executor
+#     working_directory: ~/projects
+#     steps:
+#       - run:
+#           command: |
+#             sudo pip install pipenv
+#             pipenv install django
+#             pipenv run django-admin startproject config .
+#             pipenv run python3 manage.py startapp myapp
+#             pipenv run python3 manage.py test
