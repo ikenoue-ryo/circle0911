@@ -8,6 +8,5 @@ jobs:
       - run:
           command: |
             sudo pip install pipenv
-            pipenv shell --fancy
             pipenv install django
-            django-admin startproject config .
+            pipenv run django-admin startproject config .
