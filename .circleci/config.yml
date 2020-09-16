@@ -1,15 +1,37 @@
 version: 2.1
 executors:
   my-executor:
+    working_directory: my-projects
     docker:
       - image: circleci/python:3.7
+        environment:
+          PYTHONDONTWRITEBYTECODE: 1
+          PYTHONUNBUFFERED: 1
+          TZ: Asia/Tokyo
 
+# 実行コマンドの定義
+commands:
+  django_install:
+    description: 'djangoのinstallを実行'
+    steps:
+      - run:
+        name: djangoのinstall
+        command: |
+          sudo pipenv install
+          pipenv install django
+          pipenv run django-admin startproject config .
+
+# ジョブの定義      
 jobs:
   my-job:
     executor: my-executor
     steps:
-      - run: echo outside the executor
+      - django_install
+      - run:
+        name:
+          python3 manage.py test
 
+# ワークフロー
 workflows:
   version: 2.1
   build:
@@ -17,14 +39,7 @@ workflows:
       - my-job
 
 
-# version: 2
 
-# #実行環境を定義
-# executors:
-#   test_default:
-#     working_directory: ~/workspace
-#     docker:
-#       - image: circleci/python:3.7
 
 
 # jobs:
