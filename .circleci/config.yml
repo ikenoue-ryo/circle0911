@@ -11,4 +11,4 @@ jobs:
             pipenv install django
             pipenv run django-admin startproject config .
             pipenv run python3 manage.py startapp myapp
-            pipenv 
+            pipenv run python3 manage.py test
