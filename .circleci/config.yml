@@ -1,4 +1,4 @@
-versin: 2.1
+version: 2.1
 
 # 実行環境を定義
 executors:
