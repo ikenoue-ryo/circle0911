@@ -1,56 +1,33 @@
-version: 2.1
+versin: 2.1
+
+# 実行環境を定義
 executors:
-  my-executor:
-    working_directory: my-projects
+  test_default:
+    working_directory: ~/myproject
     docker:
       - image: circleci/python:3.7
-        environment:
-          PYTHONDONTWRITEBYTECODE: 1
-          PYTHONUNBUFFERED: 1
-          TZ: Asia/Tokyo
 
-jobs:
-  my-job:
-    executor: my-executor
+# 実行コマンドの定義
+commands:
+  pip_install:
+    description: 'pip installを実行'
     steps:
-      - run: sudo chown -R circleci:circleci /usr/local/bin
-      - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       - run:
-          command: |
-            sudo pip install pipenv
+        name: pip install
+        command: pipenv install
+
+# ジョブの定義
+jobs:
+  build:
+    executor: test_default
+    steps:
+      - pip_install
+      - run:
+          name: test
+          command: python3 manage.py test
 
 workflows:
   version: 2.1
   build:
     jobs:
-      - my-job
-
-
-
-
-
-# jobs:
-#   build:
-#     executor:
-#       name: test_default
-#     steps:
-#       - run:
-#           name: test
-#           command: |
-#             sudo pip install pipenv
-#             pipenv install django
-#             pipenv run django-admin startproject config .
-
-
-# jobs:
-#   build:
-#     executor: my-executor
-#     working_directory: ~/projects
-#     steps:
-#       - run:
-#           command: |
-#             sudo pip install pipenv
-#             pipenv install django
-#             pipenv run django-admin startproject config .
-#             pipenv run python3 manage.py startapp myapp
-#             pipenv run python3 manage.py test
+      - build
