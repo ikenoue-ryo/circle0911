@@ -13,7 +13,7 @@ jobs:
   my-job:
     executor: my-executor
     steps:
-      - run: echo outside the executor
+      - command: python3 manage.py test
 
 workflows:
   version: 2.1
