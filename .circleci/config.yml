@@ -9,24 +9,18 @@ executors:
           PYTHONUNBUFFERED: 1
           TZ: Asia/Tokyo
 
-# 実行コマンドの定義
-commands:
-  django_install:
-    description: 'djangoのinstallを実行'
-    steps:
-      - run:
-        name: djangoのinstall
-        command: pipenv install
+
 
 # ジョブの定義      
 jobs:
   my-job:
     executor: my-executor
     steps:
-      - django_install
+
       - run:
         name:
-          pipenv install django
+          sudo pipenv install 
+          
 
 # ワークフロー
 workflows:
@@ -36,31 +30,3 @@ workflows:
       - my-job
 
 
-
-
-
-# jobs:
-#   build:
-#     executor:
-#       name: test_default
-#     steps:
-#       - run:
-#           name: test
-#           command: |
-#             sudo pip install pipenv
-#             pipenv install django
-#             pipenv run django-admin startproject config .
-
-
-# jobs:
-#   build:
-#     executor: my-executor
-#     working_directory: ~/projects
-#     steps:
-#       - run:
-#           command: |
-#             sudo pip install pipenv
-#             pipenv install django
-#             pipenv run django-admin startproject config .
-#             pipenv run python3 manage.py startapp myapp
-#             pipenv run python3 manage.py test
