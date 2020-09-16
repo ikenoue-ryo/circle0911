@@ -15,7 +15,7 @@ jobs:
     steps:
       - run:
           name: install pipenv
-          command: pipenv install
+          command: sudo pipenv install
 
 workflows:
   version: 2.1
