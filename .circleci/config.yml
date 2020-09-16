@@ -9,20 +9,12 @@ executors:
           PYTHONUNBUFFERED: 1
           TZ: Asia/Tokyo
 
-
-
-# ジョブの定義      
 jobs:
   my-job:
     executor: my-executor
     steps:
+      - run: echo outside the executor
 
-      - run:
-        name:
-          sudo pipenv install 
-          
-
-# ワークフロー
 workflows:
   version: 2.1
   build:
@@ -30,3 +22,31 @@ workflows:
       - my-job
 
 
+
+
+
+# jobs:
+#   build:
+#     executor:
+#       name: test_default
+#     steps:
+#       - run:
+#           name: test
+#           command: |
+#             sudo pip install pipenv
+#             pipenv install django
+#             pipenv run django-admin startproject config .
+
+
+# jobs:
+#   build:
+#     executor: my-executor
+#     working_directory: ~/projects
+#     steps:
+#       - run:
+#           command: |
+#             sudo pip install pipenv
+#             pipenv install django
+#             pipenv run django-admin startproject config .
+#             pipenv run python3 manage.py startapp myapp
+#             pipenv run python3 manage.py test
