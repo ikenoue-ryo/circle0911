@@ -10,7 +10,11 @@ jobs:
     steps:
       - run: echo outside the executor
 
-
+workflows:
+  version: 2.1
+  build:
+    jobs:
+      - my-job
 
 
 # version: 2
