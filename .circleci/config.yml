@@ -1,9 +1,14 @@
 version: 2
+
+executors:
+  my-executor:
+    docker:
+      - image: circleci/python:3.8.0
+
 jobs:
   build:
+    executor: my-executor
     working_directory: ~/projects
-    docker:
-      - image: circleci/python:3.6.4
     steps:
       - run:
           command: |
