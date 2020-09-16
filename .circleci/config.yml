@@ -1,24 +1,39 @@
-version: 2
-
-#実行環境を定義
+version: 2.1
 executors:
-  test_default:
-    working_directory: ~/workspace
+  my-executor:
     docker:
       - image: circleci/python:3.7
 
-
 jobs:
-  build:
-    executor:
-      name: test_default
+  my-job:
+    executor: my-executor
     steps:
-      - run:
-          name: test
-          command: |
-            sudo pip install pipenv
-            pipenv install django
-            pipenv run django-admin startproject config .
+      - run: echo outside the executor
+
+
+
+
+# version: 2
+
+# #実行環境を定義
+# executors:
+#   test_default:
+#     working_directory: ~/workspace
+#     docker:
+#       - image: circleci/python:3.7
+
+
+# jobs:
+#   build:
+#     executor:
+#       name: test_default
+#     steps:
+#       - run:
+#           name: test
+#           command: |
+#             sudo pip install pipenv
+#             pipenv install django
+#             pipenv run django-admin startproject config .
 
 
 # jobs:
