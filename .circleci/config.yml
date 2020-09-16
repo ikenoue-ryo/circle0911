@@ -3,13 +3,15 @@ version: 2
 #実行環境を定義
 executors:
   test_default:
+    working_directory: ~/workspace
     docker:
       - image: circleci/python:3.7
 
 
 jobs:
   build:
-    executor: test_default
+    executor:
+      name: test_default
     steps:
       - run:
           name: test
