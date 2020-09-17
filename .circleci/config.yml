@@ -10,10 +10,10 @@ executors:
           PYTHONDONTWRITEBYTECODE: 1
           PYTHONUNBUFFERED: 1
           TZ: Asia/Tokyo
-  test_env:
-    working_directory: ~/test_env
-    docker:
-      - image: circleci/postgres:12.1
+  # test_env:
+  #   working_directory: ~/test_env
+  #   docker:
+  #     - image: circleci/postgres:12.1
 
 # 実行コマンドの定義
 commands:
@@ -22,7 +22,7 @@ commands:
     steps:
       - run:
           command: |
-            sudo pip install pipenv
+            pip install pipenv
             pip install django
             python manage.py startapp myapp
             
