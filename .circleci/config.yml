@@ -14,13 +14,14 @@ commands:
     steps:
       - run:
         name: python
-        command: python -V
+        command: python manage.py startapp myapp
 
 # ジョブの定義
 jobs:
   build:
     executor: test_default
     steps:
+      - checkout
       - pip_install
 
 
