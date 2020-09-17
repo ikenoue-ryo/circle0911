@@ -18,12 +18,12 @@ executors:
 # 実行コマンドの定義
 commands:
   chown_python_package:
-    description: 'Pip_install時の権限をcircleciに変更'
+    description: 'pipinstallする権限をcircleciに変更'
     steps:
       - run:
-        command: |
-          sudo chown -R circleci:circleci /usr/local/bin
-          sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
+          command: |
+            sudo chown -R circleci:circleci /usr/local/bin
+            sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
   pip_install:
     description: 'pip installを実行'
     steps:
