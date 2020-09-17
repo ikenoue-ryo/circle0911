@@ -30,7 +30,7 @@ commands:
     steps:
       - run:
           command: |
-            python3 manage.py test
+            python3 manage.py makemigrations
             
 
 # ジョブの定義
