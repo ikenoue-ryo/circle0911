@@ -8,11 +8,13 @@ executors:
       - image: circleci/python:3.7
 
 # 実行コマンドの定義
-commands:
-  pip_install:
-    description: 'pip installを実行'
-    steps:
-      - run: echo outside the executor
+# commands:
+#   pip_install:
+#     description: 'pip installを実行'
+#     steps:
+#       - run:
+#         name: python
+#         command: sudo pip install pipenv
 
 # ジョブの定義
 jobs:
@@ -20,7 +22,6 @@ jobs:
     executor: test_default
     steps:
       - checkout
-      - pip_install
       - run:
           name: test
           command: python3 manage.py test
