@@ -6,6 +6,14 @@ executors:
     working_directory: ~/myproject
     docker:
       - image: circleci/python:3.7
+        environment:
+          PYTHONDONTWRITEBYTECODE: 1
+          PYTHONUNBUFFERED: 1
+          TZ: Asia/Tokyo
+  test_env:
+    working_directory: ~/test_env
+    docker:
+      - image: circleci/postgres:12.1
 
 # 実行コマンドの定義
 commands:
