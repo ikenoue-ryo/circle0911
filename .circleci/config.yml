@@ -41,7 +41,7 @@ jobs:
     steps:
       - checkout
       - pip_install
-      - db_migrations
+      # - db_migrations
       - run:
           name: test
           command: python manage.py test
