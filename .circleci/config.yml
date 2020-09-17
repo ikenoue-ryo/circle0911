@@ -8,13 +8,13 @@ executors:
       - image: circleci/python:3.7
 
 # 実行コマンドの定義
-# commands:
-#   pip_install:
-#     description: 'pip installを実行'
-#     steps:
-#       - run:
-#         name: python
-#         command: python manage.py startapp myapp
+commands:
+  pip_install:
+    description: 'pip installを実行'
+    steps:
+      - run:
+        name: pip install
+        command: pip install django
 
 # ジョブの定義
 jobs:
@@ -22,7 +22,10 @@ jobs:
     executor: test_default
     steps:
       - checkout
-      # - pip_install
+      - pip_install
+      - run:
+          name: test
+          command: python3 manage.py test
 
 
 workflows:
