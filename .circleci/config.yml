@@ -59,8 +59,8 @@ commands:
     description: 'テストの実行'
     steps:
       - run:
-        name: Start running test
-        command: python3 manage.py test
+          name: Start running test
+          command: python3 manage.py test
 
 # ジョブの定義
 jobs:
