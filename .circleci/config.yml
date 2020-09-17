@@ -48,6 +48,12 @@ commands:
           paths:
             - /usr/local/bin
             - /usr/local/lib/python3.8/site-packages
+  restore_python_package:
+    description: 'Pipinstallしたpackageのキャッシュを読み込む'
+    steps:
+      - restore_cache:
+          name: Restore Python Package
+          key: myapp-{{ checksum 'Pipfile.lock' }}
 
 # ジョブの定義
 jobs:
@@ -56,6 +62,7 @@ jobs:
     steps:
       - checkout
       - chown_python_package
+      - restore_python_package
       - pip_install
       - save_python_package
       - db_migrations
