@@ -41,13 +41,13 @@ commands:
             python3 manage.py migrate
   save_python_package:
     description: "pipinstallしたpackageをキャッシュする"
-        steps:
-            - save_cache:
-                name: Save Python Package
-                key: myapp-{{ checksum 'Pipfile.lock' }}
-                paths:
-                - /usr/local/bin
-                - /usr/local/lib/python3.8/site-packages
+    steps:
+      - save_cache:
+        name: Save Python Package
+        key: myapp-{{ checksum 'Pipfile.lock' }}
+        paths:
+          - /usr/local/bin
+          - /usr/local/lib/python3.8/site-packages
 
 # ジョブの定義
 jobs:
