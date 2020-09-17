@@ -13,7 +13,8 @@ commands:
     description: 'pip installを実行'
     steps:
       - run:
-        command: echo outside the executor
+        command: pip3 install -r requirements.txt --user
+
 # ジョブの定義
 jobs:
   build:
