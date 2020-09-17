@@ -12,10 +12,7 @@ commands:
   pip_install:
     description: 'pip installを実行'
     steps:
-      - run:
-        name: pip install
-        command: |
-          sudo pip install pipenv
+      - run: echo outside the executor
 
 # ジョブの定義
 jobs:
