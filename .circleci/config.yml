@@ -7,7 +7,12 @@ executors:
     docker:
       - image: circleci/python:3.7
 
-
+# 実行コマンドの定義
+commands:
+  pip_install:
+    description: 'pip installを実行'
+    steps:
+      - run: echo outside the executor
 
 # ジョブの定義
 jobs:
@@ -17,14 +22,6 @@ jobs:
       - checkout
       - pip_install
 
-
-# 実行コマンドの定義
-commands:
-  pip_install:
-    description: 'pip installを実行'
-    steps:
-      - run:
-        command: pip3 install -r requirements.txt --user
 
 
 
