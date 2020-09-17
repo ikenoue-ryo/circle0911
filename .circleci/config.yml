@@ -26,12 +26,11 @@ commands:
             pip install django
             python manage.py startapp myapp
   db_migrations:
-    desctiption: 'テスト実行用DBのマイグレーションを行う'
+    description: 'pip installを実行'
     steps:
       - run:
           command: |
-            pipenv run python3 manage.py makemigrations
-            pipenv run python3 manage.py migrate
+            python3 manage.py test
             
 
 # ジョブの定義
