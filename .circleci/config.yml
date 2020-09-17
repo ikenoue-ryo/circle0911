@@ -14,7 +14,8 @@ commands:
     steps:
       - run:
         name: pip install
-        command: pip install django
+        command: |
+          sudo pip install pipenv
 
 # ジョブの定義
 jobs:
