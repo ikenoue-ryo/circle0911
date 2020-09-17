@@ -13,8 +13,8 @@ commands:
     description: 'pip installを実行'
     steps:
       - run:
-        name: pip install
-        command: pipenv run install
+        name: python
+        command: python -V
 
 # ジョブの定義
 jobs:
@@ -22,12 +22,10 @@ jobs:
     executor: test_default
     steps:
       - pip_install
-      - run:
-          name: test
-          command: python3 manage.py test
+
 
 workflows:
   version: 2.1
-  build:
+  build_only:
     jobs:
       - build
