@@ -73,7 +73,7 @@ jobs:
       - pip_install
       - save_python_package
       - db_migrations
-      - runt_test
+      - run_test
 
 # ワークフロー
 workflows:
