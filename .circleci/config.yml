@@ -24,9 +24,9 @@ jobs:
     steps:
       - checkout
       - pip_install
-      -run:
-        name: django
-        command: django-admin startproject config .
+      - run:
+          name: django
+          command: django-admin startproject config .
 
 # ワークフロー
 workflows:
