@@ -39,7 +39,15 @@ commands:
           command: |
             python3 manage.py makemigrations
             python3 manage.py migrate
-            
+  save_python_package:
+    description: 'Pipinstallしたpackageをキャッシュする'
+    steps:
+      - save_cache:
+        name: Save Python Package
+        key: myapp-{{ .Branch }}-{{ checksum 'Pipfile.lock' }}
+        paths:
+          - 'usr/local/bin'
+          - 'usr/local/lib/python3.8/site-packages'
 
 # ジョブの定義
 jobs:
@@ -49,6 +57,7 @@ jobs:
       - checkout
       - chown_python_package
       - pip_install
+      - save_python_package
       - db_migrations
       - run:
           name: test
