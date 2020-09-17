@@ -7,7 +7,7 @@ executors:
     docker:
       - image: circleci/python:3.7
 
-実行コマンドの定義
+# 実行コマンドの定義
 commands:
   pip_install:
     description: 'pip installを実行'
