@@ -29,7 +29,6 @@ commands:
     desctiption: 'テスト実行用DBのマイグレーションを行う'
     steps:
       - run:
-          name: Start db db_migrations
           command: |
             python3 manage.py makemigrations
             python3 manage.py migrate
