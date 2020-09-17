@@ -5,7 +5,7 @@ executors:
   test_default:
     working_directory: ~/myproject
     docker:
-      - image: circleci/python:3.7
+      - image: circleci/python:3.8
         environment:
           PYTHONDONTWRITEBYTECODE: 1
           PYTHONUNBUFFERED: 1
@@ -17,6 +17,13 @@ executors:
 
 # 実行コマンドの定義
 commands:
+  chown_python_package:
+    description: 'Pip_install時の権限をcircleciに変更'
+    steps:
+      - run:
+        command: |
+          sudo chown -R circleci:circleci /usr/local/bin
+          sudo chown -R circleci:circleci /usr/local/lib/python3.8/site-packages
   pip_install:
     description: 'pip installを実行'
     steps:
@@ -40,6 +47,7 @@ jobs:
     executor: test_default
     steps:
       - checkout
+      - chown_python_package
       - pip_install
       - db_migrations
       - run:
