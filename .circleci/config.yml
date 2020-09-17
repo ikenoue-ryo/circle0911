@@ -16,7 +16,7 @@ commands:
           command: |
             sudo pip install pipenv
             pip install django
-            django-admin startproject config .
+            
 
 # ジョブの定義
 jobs:
