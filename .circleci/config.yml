@@ -27,8 +27,8 @@ jobs:
       - checkout
       - pip_install
       - run:
-          name: django
-          command: python -V
+          name: test
+          command: python manage.py test
 
 # ワークフロー
 workflows:
