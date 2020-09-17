@@ -54,6 +54,13 @@ commands:
       - restore_cache:
           name: Restore Python Package
           key: myapp-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+  
+  run_test:
+    description: 'テストの実行'
+    steps:
+      - run:
+        name: Start running test
+        command: python3 manage.py test
 
 # ジョブの定義
 jobs:
@@ -66,9 +73,7 @@ jobs:
       - pip_install
       - save_python_package
       - db_migrations
-      - run:
-          name: test
-          command: python manage.py test
+      - runt_test
 
 # ワークフロー
 workflows:
