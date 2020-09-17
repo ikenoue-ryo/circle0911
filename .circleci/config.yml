@@ -14,7 +14,7 @@ commands:
     steps:
       - run:
         name: pip install
-        command: pipenv install
+        command: pipenv run install
 
 # ジョブの定義
 jobs:
