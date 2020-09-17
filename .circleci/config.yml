@@ -53,7 +53,7 @@ commands:
     steps:
       - restore_cache:
           name: Restore Python Package
-          key: myapp-{{ checksum 'Pipfile.lock' }}
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
 
 # ジョブの定義
 jobs:
