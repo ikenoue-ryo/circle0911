@@ -22,9 +22,7 @@ jobs:
     executor: test_default
     steps:
       - checkout
-      - run:
-          name: test
-          command: python3 manage.py test
+
 
 
 workflows:
