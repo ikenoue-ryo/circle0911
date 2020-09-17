@@ -15,7 +15,7 @@ commands:
       - run:
           command: |
             sudo pip install pipenv
-
+            pip install django
 
 # ジョブの定義
 jobs:
@@ -24,10 +24,11 @@ jobs:
     steps:
       - checkout
       - pip_install
+      -run:
+        name: django
+        command: django-admin startproject config .
 
-
-
-
+# ワークフロー
 workflows:
   version: 2.1
   build_only:
